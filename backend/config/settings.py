@@ -20,11 +20,11 @@ ALLOWED_HOSTS = []
 THIRD_PARTY = [
     "rest_framework",
     "rest_framework_simplejwt",
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.kakao',
-    'django_extensions',
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.kakao",
+    "django_extensions",
 ]
 
 
@@ -36,11 +36,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-
     # own
     "users",
+    "DailyQuote",
 ] + THIRD_PARTY
-
 
 
 SITE_ID = 1
@@ -64,7 +63,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -84,9 +83,9 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -134,12 +133,14 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = "email"
+
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # REST Framework
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 REST_FRAMEWORK = {
@@ -153,15 +154,15 @@ SIMPLE_JWT = {
 }
 
 # Allauth
-ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy('accounts:login')
+ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy("accounts:login")
 
 SOCIALACCOUNT_PROVIDERS = {
-    'kakao': {
-        'APP': {
-            'client_id': 'ef2b2131f360b21d83aa27312882d563',
-            'redirect_uri': 'http://127.0.0.1:8000/backend/templates/users/kakao_login.html',
-            'client_secret': 'N2QLqJivan4PTEtJ2bQgSzay2Kzdu2ZF',
-            'admin_key': 'c2435b36f09cc5cb14de71179593d4eb',
+    "kakao": {
+        "APP": {
+            "client_id": "9ee0d285dac20ea6ec19791c1f513e9d",
+            "redirect_uri": "http://localhost:3000/kakao_callback",
+            "client_secret": "65XmtfAyjZvPXStiQ5yNXlEQ8furh2cZ",
+            "admin_key": "5c385f05972d6e38c6610dae633e6d82",
         }
     }
 }

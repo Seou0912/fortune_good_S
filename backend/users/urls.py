@@ -1,5 +1,5 @@
 from django.urls import path
-from users.views import (KakaoLoginView, signup)
+from users.views import KakaoLoginView, signup
 
 urlpatterns = [
     path("signup", signup, name="signup"),
