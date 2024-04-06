@@ -7,13 +7,17 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+from django.urls import path
+from users import views
+from DailyQuote.views import todays_message
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('signup/', signup, name='signup'),
-    path('accounts/', include('allauth.urls')),
-    path('users/', include('users.urls')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path("", views.home, name="home"),
+    path("admin/", admin.site.urls),
+    path("signup/", signup, name="signup"),
+    path("/accounts/kakao/login/", include("allauth.urls")),
+    path("users/", include("users.urls")),
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("todays-message/", todays_message, name="todays_message"),
 ]

@@ -12,10 +12,11 @@ from .models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from faker import Faker
 
-fake = Faker()
+from django.http import HttpResponse
 
-fake_email = fake.email()
-fake_birthdate = fake.date_of_birth(minimum_age=18, maximum_age=65)
+
+def home(request):
+    return HttpResponse("Welcome to the homepage!")
 
 
 def signup(request):

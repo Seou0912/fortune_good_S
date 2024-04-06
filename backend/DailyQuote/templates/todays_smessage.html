@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>오늘의 한마디</title>
+  </head>
+  <body>
+    <h1>오늘의 한마디</h1>
+    {% if todays_message %}
+    <p>{{ todays_message.message }}</p>
+    <p>{{ todays_message.date }}</p>
+    {% else %}
+    <p>아직 등록된 한마디가 없습니다.</p>
+    {% endif %}
+  </body>
+</html>
